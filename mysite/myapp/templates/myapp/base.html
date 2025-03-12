@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>
+    {% block title %}
+
+    {% endblock %}
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #343a40;
+      text-align: center;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+    li {
+      margin: 10px 0;
+      padding: 10px;
+      background: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background 0.3s, transform 0.2s;
+      text-align: center;
+    }
+    li a {
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+    }
+    li a:hover {
+      text-decoration: underline;
+      color: #0056b3;
+    }
+    li:hover {
+      background: #f1f1f1;
+      transform: scale(1.02);
+    }
+    img {
+      width: 100px;
+      height: 100px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+    
+  </style>
+</head>
+
+<body>
+
+{% block body %}
+
+{% endblock %}
+<div>
+  {% now 'H:i' %}
+</div>
+<div>
+  {% now 'l' as current_weekday %}
+  Today is {{current_weekday}}
+</div>
+</body>
+</html>

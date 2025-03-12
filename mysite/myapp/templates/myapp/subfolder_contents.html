@@ -1,0 +1,43 @@
+﻿{% extends 'myapp/base.html' %}
+
+{% block title %}
+{{ subfolder_name }} Contents
+{% endblock %}
+
+{% block body %}
+<style>
+    a.back-link {
+        text-decoration: none;
+        color: #555555;
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+    a.back-link:hover {
+        color: #333333;
+    }
+</style>
+
+<h1>Contents of {{ folder_name }}/{{ subfolder_names }}</h1>
+
+<ul>
+    {% for item in folder_contents %}
+    <li>
+        {% if item.type == 'folder' %}
+        <a href="{% url 'myapp:dynamic_subfolder_view' folder_name=folder_name subfolder_names=subfolder_names|add:'/'|add:item.name %}">
+            {{ item.name }}
+        </a>
+        {% else %}
+        <div class="text-center">
+            <img src="{{ item.icon }}" alt="{{ item.name }}" class="w-24 h-24 mx-auto mb-4">
+            <a href="{% url 'myapp:open_file' folder_name=folder_name subfolder_names=subfolder_names file_name=item.name %}">
+                {{ item.name }}
+            </a>
+        </div>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+<a class="back-link" href="{% url 'myapp:folder_view' folder_name=folder_name %}">← Back to Local Folders {{ folder_name }}</a>
+{% endblock %}
