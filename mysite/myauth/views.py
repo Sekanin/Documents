@@ -7,6 +7,7 @@ from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.http import require_POST
 from django.views.generic import TemplateView, CreateView
+from django.contrib.auth.decorators import login_required
 
 
 class AboutMeView(TemplateView):
@@ -71,3 +72,11 @@ def set_session_view(request: HttpRequest) -> HttpResponse:
 def get_session_view(request: HttpRequest) -> HttpResponse:
     value = request.session.get("foobar", "default")
     return HttpResponse(f"Session value: {value!r}")
+
+@login_required
+def home_view(request):
+    is_admin = request.user.groups.filter(name="Admin").exists()
+    context = {
+        'is_admin': is_admin,
+    }
+    return render(request, 'myauth/home.html', context)

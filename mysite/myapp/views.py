@@ -29,7 +29,8 @@ def list_folder_contents(folder_path):
             if item.endswith('.pdf'):
                 jpg_name = item[:-4] + '.jpg'
                 if jpg_name in os.listdir(folder_path):
-                    icon_path = jpg_name
+                    #icon_path = jpg_name
+                    icon_path = os.path.join(settings.STATIC_URL, 'myapp/images', jpg_name)
                 else:
                     icon_path = DEFAULT_ICON_PATH
             folder_contents.append({'name': item, 'type': 'file', 'icon': icon_path})

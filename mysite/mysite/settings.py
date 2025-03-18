@@ -126,7 +126,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "docs"),
 ]
 
-STATIC_URL = '/docs/'
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -137,4 +140,4 @@ LOGIN_REDIRECT_URL = '/myapp/'
 
 BASE_FOLDER_PATH = 'C:/Users/SEKAN/Desktop/docs'
 
-#LOGIN_REDIRECT_URL = reverse_lazy("myauth:about-me")
+#LOGIN_REDIRECT_URL = reverse_lazy("myauth:home")

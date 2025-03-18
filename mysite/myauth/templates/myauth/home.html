@@ -1,0 +1,41 @@
+﻿{% extends "myauth/base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block body %}
+<style>
+    .section { 
+        padding: 1rem; 
+        margin: 1rem; 
+        background-color: #eeeeff; 
+        border-radius: 5px; 
+        border-left: 5px solid #6200ea; 
+    }
+</style>
+{% if is_admin %}
+
+<div class="section">
+    <h2>Espace Administrateur</h2>
+    <ul>
+        <li><a href="#">Gérer les utilisateurs</a></li>
+        <li><a href="#">Créer des dossiers</a></li>
+        <li><a href="#">Consulter les logs</a></li>
+    </ul>
+</div>
+{% else %}
+
+<div class="section">
+    <h2>Espace Client</h2>
+    <ul>
+        <li><a href="#">Voir mes dossiers</a></li>
+        <li><a href="#">Télécharger un fichier</a></li>
+        <li><a href="#">Modifier mes informations</a></li>
+    </ul>
+</div>
+{% endif %}
+<footer class="footer">
+    © 2025 - Gestion des Dossiers et Fichiers par Sekanin
+</footer>
+{% endblock %}

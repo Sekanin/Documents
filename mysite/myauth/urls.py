@@ -10,6 +10,7 @@ from .views import(
     MyLogoutView,
     AboutMeView,
     RegisterView,
+    home_view,
 )
 
 app_name = "myauth"
@@ -25,6 +26,7 @@ urlpatterns = [
         name="login"),
 
     path("logout/", logout_view, name="logout"),
+    path('', home_view, name='home'),
     #path("logout/", MyLogoutView.as_view(), name="logout"),
     path("about-me/", AboutMeView.as_view(), name="about-me"),
     path("register/", RegisterView.as_view(), name="register"),
