@@ -140,4 +140,5 @@ LOGIN_REDIRECT_URL = '/myapp/'
 
 BASE_FOLDER_PATH = 'C:/Users/SEKAN/Desktop/docs'
 
-#LOGIN_REDIRECT_URL = reverse_lazy("myauth:home")
+SUCCESS_URL = reverse_lazy("myauth:about-me")
+

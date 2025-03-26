@@ -19,16 +19,13 @@ class RegisterView(CreateView):
     success_url = reverse_lazy("myauth:about-me")
 
     def form_valid(self, form):
-        response = super().form_valid(form)
-        username = form.cleaned_data.get("username")
-        password = form.cleaned_data.get("password")
-        user = authenticate(
-            self.request,
-            username=username,
-            password=password,
-        )
-        login(request=self.request, user=user)
-        return response
+        user = form.save()
+        login(self.request, user)
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print("Erreurs du formulaire :", form.errors)
+        return super().form_invalid(form)
 
 @csrf_protect
 def login_view(request: HttpRequest) -> HttpResponse:
@@ -48,6 +45,7 @@ def login_view(request: HttpRequest) -> HttpResponse:
             return redirect("/myapp/")
 
         return render(request, "myauth/login.html", {"error": "Invalid login credentials"})
+
 
 def logout_view(request: HttpRequest) -> HttpResponse:
     logout(request)
@@ -72,11 +70,3 @@ def set_session_view(request: HttpRequest) -> HttpResponse:
 def get_session_view(request: HttpRequest) -> HttpResponse:
     value = request.session.get("foobar", "default")
     return HttpResponse(f"Session value: {value!r}")
-
-@login_required
-def home_view(request):
-    is_admin = request.user.groups.filter(name="Admin").exists()
-    context = {
-        'is_admin': is_admin,
-    }
-    return render(request, 'myauth/home.html', context)

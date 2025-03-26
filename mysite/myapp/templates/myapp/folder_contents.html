@@ -1,7 +1,7 @@
 ﻿{% extends 'myapp/base.html' %}
 
 {% block title %}
-{{ subfolder_name }} Contents
+Содержание {{ subfolder_name }}
 {% endblock %}
 
 {% block body %}
@@ -17,10 +17,9 @@
     a.back-link:hover {
         color: #333333;
     }
-    
 </style>
 
-<h1>Contents of {{ folder_name }}</h1>
+<h1>Содержание {{ folder_name }}</h1>
 <ul>
     {% for item in folder_contents %}
        <li>
@@ -35,5 +34,5 @@
        </li>
     {% endfor %}
 </ul>
-<a class="back-link" href="{% url 'myapp:open_folder' %}">← Back to Local Folders</a>
+<a class="back-link" href="{% url 'myapp:open_folder' %}">← Вернуться к локальным папкам</a>
 {% endblock %}

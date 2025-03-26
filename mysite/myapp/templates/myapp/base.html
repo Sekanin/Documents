@@ -55,15 +55,22 @@
       display: block;
       margin: 0 auto 10px;
     }
+    .logo {
+      width: 150px;
+      height: auto;
+      margin: 0 auto 10px;
+    }
     
   </style>
 </head>
 
 <body>
+<img src="/static/myauth/images/niva.png" alt="Logo" class="logo">
 
 {% block body %}
 
 {% endblock %}
+
 <div>
   {% now 'H:i' %}
 </div>

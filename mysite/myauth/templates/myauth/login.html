@@ -5,18 +5,106 @@ Login
 {% endblock %}
 
 {% block body %}
-<h2>Login</h2>
-<form method="POST">
-    {% csrf_token %}
-    {% if error %}
-       <p style="color: red;">{{ error }}</p>
-    {% endif %}
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username"><br><br>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f5f5f5;
+        margin: 0;
+    }
+    .login-container {
+        background: #ffffff;
+        padding: 20px 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+    }
+    .logo {
+        width: 150px;
+        height: auto;
+        margin: 0 auto 10px;
+    }
+    .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555555;
+        font-weight: bold;
+    }
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+    .login-button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        color: #ffffff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .login-button:hover {
+        background-color: #0056b3;
+    }
+    .error-message {
+        color: red;
+        font-size: 14px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    .forgot-password-link,
+    .register-link {
+        color: #007bff;
+        text-decoration: none;
+    }
+    .forgot-password-link:hover,
+    .register-link:hover {
+        text-decoration: underline;
+    }
+    .register-text {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 14px;
+        color: #555555;
+    }
+</style>
 
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password"><br><br>
+<div class="login-container">
+    <img src="/static/myauth/images/niva.png" alt="Logo" class="logo">
+    <form method="POST">
+        {% csrf_token %}
+        {% if error %}
+        <p class="error-message">{{ error }}</p>
+        {% endif %}
+        <div class="input-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username">
+        </div>
+        <div class="input-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password">
+        </div>
+        <button type="submit" class="login-button">Login</button>
+    </form>
 
-    <button type="submit">Login</button>
-</form>
+    <p class="register-text">Еще не зарегистрирован?
+        <a href="{% url 'myauth:register' %}" class="register-link">Зарегистрироваться</a>
+    </p>
+    
+</div>
 {% endblock %}

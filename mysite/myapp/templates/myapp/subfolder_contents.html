@@ -1,7 +1,7 @@
 ﻿{% extends 'myapp/base.html' %}
 
 {% block title %}
-{{ subfolder_name }} Contents
+Содержание {{ subfolder_name }}
 {% endblock %}
 
 {% block body %}
@@ -19,7 +19,7 @@
     }
 </style>
 
-<h1>Contents of {{ folder_name }}/{{ subfolder_names }}</h1>
+<h1>Содержание {{ folder_name }}/{{ subfolder_names }}</h1>
 
 <ul>
     {% for item in folder_contents %}

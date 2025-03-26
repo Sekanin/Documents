@@ -1,11 +1,11 @@
 ﻿{% extends 'myapp/base.html' %}
 
 {% block title %}
-Local Folders
+Локальные папки
 {% endblock %}
 
 {% block body %}
-<h1>Folders List</h1>
+<h1>Список папок</h1>
 <ul>
    {% for folder in folders %}
    <li><a href="{% url 'myapp:folder_view' folder_name=folder %}">{{ folder }}</a></li>

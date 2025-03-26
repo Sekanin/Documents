@@ -8,6 +8,7 @@ from .models import FolderPermission
 BASE_FOLDER_PATH = getattr(settings, 'BASE_FOLDER_PATH', 'C:/Users/SEKAN/Desktop/docs')
 DEFAULT_ICON_PATH = '/static/myapp/images/default.jpg'
 
+
 @login_required
 def open_folder(request):
     user_permissions = FolderPermission.objects.filter(user=request.user)
