@@ -13,6 +13,10 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #f8f9fa;
+      background-image: url('/static/myapp/images/background_niva.jpg'); 
+      background-size: cover; 
+      background-position: center; 
+      background-repeat: no-repeat; 
       margin: 0;
       padding: 20px;
     }
@@ -60,23 +64,37 @@
       height: auto;
       margin: 0 auto 10px;
     }
-    
+    a.back-link {
+      text-decoration: none;
+      color: #dddddd;
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    a.back-link:hover {
+      color: #f8f9fa;
+    }
+    .bottom-left {
+      position: fixed; 
+      bottom: 0; 
+      left: 0; 
+      color: white;
+    }
   </style>
 </head>
 
 <body>
-<img src="/static/myauth/images/niva.png" alt="Logo" class="logo">
+<img src="/static/myapp/images/niva.png" alt="Logo" class="logo">
 
 {% block body %}
 
 {% endblock %}
 
-<div>
-  {% now 'H:i' %}
-</div>
-<div>
-  {% now 'l' as current_weekday %}
-  Today is {{current_weekday}}
+<div class="bottom-left">
+  <p>{% now 'H:i' %}</p>
+  <p>{% now 'l' as current_weekday %}
+    Today is {{current_weekday}}</p>
 </div>
 </body>
 </html>

@@ -5,22 +5,7 @@
 {% endblock %}
 
 {% block body %}
-<style>
-    a.back-link {
-        text-decoration: none;
-        color: #555555;
-        display: block;
-        text-align: center;
-        margin-top: 20px;
-        font-weight: bold;
-    }
-    a.back-link:hover {
-        color: #333333;
-    }
-</style>
-
 <h1>Содержание {{ folder_name }}/{{ subfolder_names }}</h1>
-
 <ul>
     {% for item in folder_contents %}
     <li>

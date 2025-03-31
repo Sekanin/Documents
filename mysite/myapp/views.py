@@ -8,7 +8,6 @@ from .models import FolderPermission
 BASE_FOLDER_PATH = getattr(settings, 'BASE_FOLDER_PATH', 'C:/Users/SEKAN/Desktop/docs')
 DEFAULT_ICON_PATH = '/static/myapp/images/default.jpg'
 
-
 @login_required
 def open_folder(request):
     user_permissions = FolderPermission.objects.filter(user=request.user)
@@ -20,21 +19,33 @@ def open_folder(request):
 def list_folder_contents(folder_path):
     folder_contents = []
     allowed_file_types = {'.pdf'}
+
     for item in os.listdir(folder_path):
         item_path = os.path.join(folder_path, item)
+
         if os.path.isdir(item_path):
             subfolder_contents = list_folder_contents(item_path)
-            folder_contents.append({'name': item, 'type': 'folder', 'contents': subfolder_contents})
+            folder_contents.append({
+                'name': item,
+                'type': 'folder',
+                'contents': subfolder_contents
+            })
+
         elif any(item.endswith(ext) for ext in allowed_file_types):
-            icon_path = DEFAULT_ICON_PATH
-            if item.endswith('.pdf'):
-                jpg_name = item[:-4] + '.jpg'
-                if jpg_name in os.listdir(folder_path):
-                    #icon_path = jpg_name
-                    icon_path = os.path.join(settings.STATIC_URL, 'myapp/images', jpg_name)
-                else:
-                    icon_path = DEFAULT_ICON_PATH
-            folder_contents.append({'name': item, 'type': 'file', 'icon': icon_path})
+            jpg_name = item[:-4] + '.jpg'
+            jpg_path = os.path.join(folder_path, jpg_name)
+
+            if os.path.exists(jpg_path):
+                icon_path = os.path.join(settings.STATIC_URL, 'myapp/images', jpg_name)
+            else:
+                icon_path = DEFAULT_ICON_PATH
+
+            folder_contents.append({
+                'name': item,
+                'type': 'file',
+                'icon': icon_path
+            })
+
     return folder_contents
 
 @login_required
