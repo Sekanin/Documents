@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ООО «Нива-Мотор» - Главная Страница</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa url('/static/myapp/images/niva_background.jpg') center/cover no-repeat fixed;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    header {
+      height: 80px;
+      background-color: rgba(248, 249, 250, 0.95);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      background: url('/static/myapp/images/niva.png') center/contain no-repeat;
+      width: 80px;
+      height: 80px;
+      flex-shrink: 0;
+    }
+
+    .company-name {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0 20px;
+      color: #007bff;
+      flex-grow: 1;
+    }
+
+    .links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: #007bff;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .links a:hover {
+      background-color: rgba(0, 123, 255, 0.1);
+      text-decoration: none;
+    }
+
+    .content-wrapper {
+      width: min(1200px, 90vw);
+      margin: 0 auto;
+      padding: 100px 0;
+    }
+    
+    .content-wrapper:nth-child(even) .section-number {
+      text-align: left;
+    }
+
+    .content-wrapper:nth-child(odd) .section-number {
+      text-align: right;
+    }
+
+    .hero-section {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-number {
+      font-size: 15em;
+      font-weight: bold;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .section-description {
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 0 20px;
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+      }
+
+      .company-name {
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      .links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .content-wrapper {
+        padding: 60px 0;
+      }
+
+      .hero-section {
+        padding: 20px;
+      }
+
+      .section-title {
+        font-size: 1.8em;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo"></div>
+  <div class="company-name">ООО «Нива-Мотор»</div>
+  <nav class="links">
+    <a href="https://niva.by/enterprises/ooo-niva-motor/">Информация</a>
+    <a href="myauth/logout/">Документация</a>
+    <a href="/static/myapp/pdf/ooo-niva-motor-1.pdf">Каталог</a>
+  </nav>
+</header>
+
+<div class="content-wrapper">
+  <div class="hero-section">
+    <div class="section-number">01</div>
+    <div class="section-description">
+      <div class="section-title">Добро пожаловать в ООО «Нива-Мотор»</div>
+      <p>Мы специализируемся на производстве и обслуживании шахтной техники. Наша компания обладает многолетним опытом работы в отрасли и предлагает высококачественную продукцию и услуги.</p>
+      <p>На нашем сайте вы можете найти информацию о нашей компании, документацию на производимую технику, а также контактные данные для связи с нашими специалистами.</p>
+    </div>
+  </div>
+</div>
+<div class="content-wrapper">
+  <div class="hero-section">
+    <div class="section-number">02</div>
+    <div class="section-description">
+      <div class="section-title">Наша продукция</div>
+      <p>Мы производим широкий ассортимент шахтной техники, включая погрузчики, буровые установки и транспортные средства для подземных работ.</p>
+      <p>Вся наша продукция соответствует международным стандартам безопасности и качества.</p>
+    </div>
+  </div>
+</div>
+<div class="content-wrapper">
+  <div class="hero-section">
+    <div class="section-number">03</div>
+    <div class="section-description">
+      <div class="section-title">Техническое обслуживание</div>
+      <p>Наша компания предлагает полный спектр услуг по техническому обслуживанию и ремонту шахтного оборудования.</p>
+      <p>Наши сертифицированные специалисты готовы обеспечить бесперебойную работу вашей техники в любых условиях.</p>
+    </div>
+  </div>
+</div>
+<div class="content-wrapper">
+  <div class="hero-section">
+    <div class="section-number">04</div>
+    <div class="section-description">
+      <div class="section-title">Контакты</div>
+      <p>Свяжитесь с нами для получения дополнительной информации о нашей продукции и услугах.</p>
+      <p>Наши менеджеры всегда готовы ответить на ваши вопросы и помочь с выбором оптимального решения для ваших задач.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
